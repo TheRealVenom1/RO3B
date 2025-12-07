@@ -5,29 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>VMBL STORE - أكبر ستور في الشرق الأوسط</title>
   <meta name="description" content="VMBL STORE - أكبر متجر ديسكورد في الشرق الأوسط | يوزرات - نيترو - سيرفرات - بوتات - هوستينج"/>
-  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <!-- Favicon (الآيكون الصغير اللي بيظهر بره في التب + الموبايل) -->
+  <link rel="icon" href="https://i.ibb.co/YFgrfRbQ/81129628470b.webp" type="image/webp">
+  <link rel="apple-touch-icon" href="https://i.ibb.co/YFgrfRbQ/81129628470b.webp">
+
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap');
     
-    :root {
-      --bg: #0f0f0f;
-      --text: #ffffff;
-      --accent: #5865F2;
-      --gray: #b9bbbe;
-    }
-    
+    :root { --bg: #0f0f0f; --text: #ffffff; --accent: #5865F2; }
     * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+    body { font-family: 'Cairo', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
 
-    /* الهيدر الجديد مع الصورة جنب الاسم */
     header {
       background: linear-gradient(135deg, #5865F2, #8b46ff);
-      padding: 2rem 1.5rem;
+      padding: 2.5rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -36,32 +28,26 @@
       box-shadow: 0 4px 20px rgba(88, 101, 242, 0.3);
     }
     .logo-img {
-      width: 130px;
-      height: 130px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 6px solid rgba(255,255,255,0.25);
-      box-shadow: 0 0 30px rgba(88,101,242,0.7);
+      border: 6px solid rgba(255,255,255,0.3);
+      box-shadow: 0 0 35px rgba(88,101,242,0.8);
     }
     .header-text h1 {
-      font-size: 3.8rem;
+      font-size: 4rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
     }
     .header-text .tagline {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       opacity: 0.95;
     }
 
     main { max-width: 1000px; margin: 3rem auto; padding: 0 1rem; }
     .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
-    .card {
-      background: #1a1a1a;
-      padding: 1.8rem;
-      border-radius: 12px;
-      border: 1.5px solid #2a2a2a;
-      transition: all 0.3s ease;
-    }
+    .card { background: #1a1a1a; padding: 1.8rem; border-radius: 12px; border: 1.5px solid #2a2a2a; transition: all 0.3s ease; }
     .card:hover { border-color: var(--accent); transform: translateY(-5px); }
     .card h3 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.4rem; }
     .section-title { font-size: 2rem; text-align: center; margin: 3rem 0 2rem; color: var(--accent); }
@@ -80,7 +66,7 @@
     footer { text-align: center; padding: 3rem 1rem; background: #111; margin-top: 4rem; }
 
     @media (max-width: 600px) {
-      .header-text h1 { font-size: 2.6rem; }
+      .header-text h1 { font-size: 2.7rem; }
       .header-text .tagline { font-size: 1.3rem; }
       .logo-img { width: 100px; height: 100px; }
     }
@@ -89,20 +75,17 @@
 <body>
 
   <header>
-    <!-- غيّر اللينك ده بصورة بتاعتك -->
-    <img src="https://i.ibb.co/YFgrfRbQ/81129628470b.webp" alt="VMBL Logo" class="logo-img">
-    
+    <!-- الصورة الكبيرة في الهيدر -->
+    <img src="https://i.ibb.co/YFgrfRbQ/81129628470b.webp" alt="VMBL STORE" class="logo-img">
+
     <div class="header-text">
       <h1>VMBL STORE</h1>
       <p class="tagline">The Biggest Store In Middle East</p>
     </div>
-
-    <!-- لو عايز الصورة على الشمال بدل اليمين، غيّر ترتيب الـ img والـ div -->
   </header>
 
   <main>
     <h2 class="section-title">اللي بنقدمه</h2>
-    
     <div class="services">
       <div class="card"><h3>يوزرات ديسكورد</h3><p>يوزرات نادرة ومميزة بجميع الأنواع</p></div>
       <div class="card"><h3>نيترو لينك 3 شهور</h3><p>نيترو بأفضل الأسعار</p></div>
@@ -138,4 +121,4 @@
   </footer>
 
 </body>
-                                                </html>
+      </html>
