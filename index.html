@@ -23,32 +23,38 @@
       color: var(--text);
       line-height: 1.6;
     }
+
+    /* الهيدر الجديد مع الصورة جنب الاسم */
     header {
       background: linear-gradient(135deg, #5865F2, #8b46ff);
-      padding: 2rem 1rem;
-      text-align: center;
+      padding: 2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
       box-shadow: 0 4px 20px rgba(88, 101, 242, 0.3);
     }
-    h1 {
-      font-size: 3.5rem;
+    .logo-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 6px solid rgba(255,255,255,0.25);
+      box-shadow: 0 0 30px rgba(88,101,242,0.7);
+    }
+    .header-text h1 {
+      font-size: 3.8rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
     }
-    .tagline {
-      font-size: 1.5rem;
+    .header-text .tagline {
+      font-size: 1.6rem;
       opacity: 0.95;
     }
-    main {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin: 3rem 0;
-    }
+
+    main { max-width: 1000px; margin: 3rem auto; padding: 0 1rem; }
+    .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
     .card {
       background: #1a1a1a;
       padding: 1.8rem;
@@ -56,38 +62,14 @@
       border: 1.5px solid #2a2a2a;
       transition: all 0.3s ease;
     }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-5px);
-    }
-    .card h3 {
-      color: var(--accent);
-      margin-bottom: 0.8rem;
-      font-size: 1.4rem;
-    }
-    .section-title {
-      font-size: 2rem;
-      text-align: center;
-      margin: 3rem 0 2rem;
-      color: var(--accent);
-    }
-    .payment-methods, .socials {
-      text-align: center;
-      background: #1a1a1a;
-      padding: 2rem;
-      border-radius: 12px;
-      margin: 2rem 0;
-    }
-    .socials a {
-      color: var(--accent);
-      font-weight: bold;
-      text-decoration: none;
-      font-size: 1.3rem;
-    }
+    .card:hover { border-color: var(--accent); transform: translateY(-5px); }
+    .card h3 { color: var(--accent); margin-bottom: 0.8rem; font-size: 1.4rem; }
+    .section-title { font-size: 2rem; text-align: center; margin: 3rem 0 2rem; color: var(--accent); }
+    .payment-methods, .socials { text-align: center; background: #1a1a1a; padding: 2rem; border-radius: 12px; margin: 2rem 0; }
     .discord-join {
       display: inline-block;
       background: #5865F2;
-      color: white !important;
+      color: white;
       padding: 1rem 2.5rem;
       border-radius: 50px;
       font-size: 1.5rem;
@@ -95,64 +77,45 @@
       text-decoration: none;
       font-weight: bold;
     }
-    footer {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: #111;
-      margin-top: 4rem;
-    }
+    footer { text-align: center; padding: 3rem 1rem; background: #111; margin-top: 4rem; }
+
     @media (max-width: 600px) {
-      h1 { font-size: 2.5rem; }
-      .tagline { font-size: 1.2rem; }
+      .header-text h1 { font-size: 2.6rem; }
+      .header-text .tagline { font-size: 1.3rem; }
+      .logo-img { width: 100px; height: 100px; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>VMBL STORE</h1>
-    <p class="tagline">The Biggest Store In Middle East</p>
+    <!-- غيّر اللينك ده بصورة بتاعتك -->
+    <img src="https://i.ibb.co/YFgrfRbQ/81129628470b.webp" alt="VMBL Logo" class="logo-img">
+    
+    <div class="header-text">
+      <h1>VMBL STORE</h1>
+      <p class="tagline">The Biggest Store In Middle East</p>
+    </div>
+
+    <!-- لو عايز الصورة على الشمال بدل اليمين، غيّر ترتيب الـ img والـ div -->
   </header>
 
   <main>
     <h2 class="section-title">اللي بنقدمه</h2>
     
     <div class="services">
-      <div class="card">
-        <h3>يوزرات ديسكورد</h3>
-        <p>يوزرات نادرة ومميزة بجميع الأنواع</p>
-      </div>
-      <div class="card">
-        <h3>نيترو لينك 3 شهور</h3>
-        <p>نيترو بأفضل الأسعار</p>
-      </div>
-      <div class="card">
-        <h3>إنشاء سيرفرات ديسكورد</h3>
-        <p>سيرفرات جاهزة احترافية حسب الطلب</p>
-      </div>
-      <div class="card">
-        <h3>شحن كريديت ProBot</h3>
-        <p>كريديت بروبوت بأرخص سعر في السوق</p>
-      </div>
-      <div class="card">
-        <h3>بوت هوستنج</h3>
-        <p>هوست قوي 24/7 بدون توقف</p>
-      </div>
-      <div class="card">
-        <h3>مشاريع بوتات ديسكورد جاهزة</h3>
-        <p>بوتات مبرمجة وجاهزة للاستخدام</p>
-      </div>
-      <div class="card">
-        <h3>أعضاء ديسكورد</h3>
-        <p>أعضاء حقيقيين</p>
-      </div>
+      <div class="card"><h3>يوزرات ديسكورد</h3><p>يوزرات نادرة ومميزة بجميع الأنواع</p></div>
+      <div class="card"><h3>نيترو لينك 3 شهور</h3><p>نيترو بأفضل الأسعار</p></div>
+      <div class="card"><h3>إنشاء سيرفرات ديسكورد</h3><p>سيرفرات جاهزة احترافية حسب الطلب</p></div>
+      <div class="card"><h3>شحن كريديت ProBot</h3><p>كريديت بروبوت بأرخص سعر في السوق</p></div>
+      <div class="card"><h3>بوت هوستنج</h3><p>هوست قوي 24/7 بدون توقف</p></div>
+      <div class="card"><h3>مشاريع بوتات ديسكورد جاهزة</h3><p>بوتات مبرمجة وجاهزة للاستخدام</p></div>
+      <div class="card"><h3>أعضاء ديسكورد</h3><p>أعضاء حقيقيين</p></div>
     </div>
 
     <h2 class="section-title">طرق الدفع</h2>
     <div class="payment-methods">
-      <p style="font-size:1.5rem;">
-        <strong>Instapay • Vodafone Cash • Orange Cash</strong>
-      </p>
+      <p style="font-size:1.5rem;"><strong>Instapay • Vodafone Cash • Orange Cash</strong></p>
     </div>
 
     <h2 class="section-title">حساباتنا الرسمية</h2>
@@ -175,4 +138,4 @@
   </footer>
 
 </body>
-  </html>
+                                                </html>
