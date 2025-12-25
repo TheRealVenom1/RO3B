@@ -1,268 +1,326 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>VMBL STORE - أكبر ستور في الشرق الأوسط</title>
-  <link rel="icon" href="https://i.ibb.co/YFgrfRbQ/81129628470b.webp" type="image/webp">
-
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600;800;900&display=swap');
-
-    :root {
-      --main: #6366f1;
-      --accent: #a855f7;
-      --bg: #0a0a0a;
-      --card: #111111;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Cairo', sans-serif;
-      background: var(--bg);
-      color: #fff;
-      line-height: 1.7;
-      transition: all 0.4s;
-    }
-
-    /* زر تبديل اللغة في الزاوية */
-    .lang-switch {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 9999;
-      background: rgba(0,0,0,0.7);
-      padding: 12px 20px;
-      border-radius: 50px;
-      backdrop-filter: blur(10px);
-      border: 2px solid var(--main);
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 0 30px rgba(99,102,241,0.5);
-      transition: all 0.3s;
-    }
-    .lang-switch:hover { transform: scale(1.1); box-shadow: 0 0 50px var(--main); }
-
-    header {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      background: linear-gradient(135deg, #1e1b4b, #000);
-      position: relative;
-      overflow: hidden;
-    }
-    header::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at center, rgba(99,102,241,0.3) 0%, transparent 70%);
-      animation: pulse 8s infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity: 0.4; } 50% { opacity: 0.8; } }
-
-    .logo-img {
-      width: 180px; height: 180px; border-radius: 50%;
-      border: 6px solid var(--main);
-      margin-bottom: 2rem;
-      animation: float 6s ease-in-out infinite;
-      box-shadow: 0 0 0 80px var(--main);
-    }
-    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-30px); } }
-
-    h1 {
-      font-size: 5.5rem;
-      font-weight: 900;
-      background: linear-gradient(90deg, #fff, var(--main), #a855f7);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 1rem 0;
-    }
-    .tagline {
-      font-size: 2rem;
-      opacity: 0.9;
-      margin-bottom: 3rem;
-    }
-
-    main { max-width: 1200px; margin: 5rem auto; padding: 0 2rem; }
-
-    .section-title {
-      font-size: 3rem;
-      text-align: center;
-      margin: 5rem 0 3rem;
-      color: var(--main);
-      position: relative;
-    }
-    .section-title::after {
-      content: ''; display: block; width: 150px; height: 5px;
-      background: linear-gradient(90deg, var(--main), var(--accent));
-      margin: 1rem auto; border-radius: 10px;
-    }
-
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2.5rem;
-      margin: 4rem 0;
-    }
-    .card {
-      background: var(--card);
-      padding: 2.5rem;
-      border-radius: 24px;
-      text-align: center;
-      border: 1px solid #333;
-      transition: all 0.5s ease;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeUp 0.8s ease-out forwards;
-    }
-    .card:nth-child(1) { animation-delay: 0.2s; }
-    .card:nth-child(2) { animation-delay: 0.4s; }
-    .card:nth-child(3) { animation-delay: 0.6s; }
-    .card:nth-child(4) { animation-delay: 0.8s; }
-    .card:nth-child(5) { animation-delay: 1s; }
-    .card:nth-child(6) { animation-delay: 1.2s; }
-    .card:nth-child(7) { animation-delay: 1.4s; }
-    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-
-    .card:hover {
-      transform: translateY(-20px);
-      border-color: var(--main);
-      box-shadow: 0 20px 60px rgba(99,102,241,0.4);
-      background: linear-gradient(135deg, #1a1a2e, #111);
-    }
-    .card h3 {
-      font-size: 1.8rem;
-      color: var(--main);
-      margin-bottom: 1rem;
-    }
-
-    .discord-join {
-      display: block;
-      width: 400px; margin: 6rem auto; padding: 1.8rem;
-      background: linear-gradient(45deg, var(--main), var(--accent));
-      color: white; font-size: 2.2rem; font-weight: bold;
-      text-align: center; border-radius: 60px; text-decoration: none;
-      box-shadow: 0 15px 50px rgba(99,102,241,0.6);
-      transition: all 0.4s;
-    }
-    .discord-join:hover {
-      transform: scale(1.1);
-      box-shadow: 0 25px 80px rgba(168,85,247,0.8);
-    }
-
-    footer {
-      text-align: center;
-      padding: 4rem;
-      background: #000;
-      font-size: 1.3rem;
-      color: #888;
-    }
-
-    /* الوضع الإنجليزي */
-    [dir="ltr"] h1 { font-size: 5rem; }
-    [dir="ltr"] .tagline { font-size: 1.8rem; }
-    [dir="ltr"] .section-title { font-size: 2.8rem; }
-    [dir="ltr"] .card h3 { font-size: 1.7rem; }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 4rem; }
-      .logo-img { width: 140px; height: 140px; }
-      .discord-join { width: 90%; font-size: 1.8rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VMBL STORE</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #ffd700;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        nav {
+            background-color: #111;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+        nav a {
+            color: #ffd700;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px #ffd700;
+        }
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://thumbs.dreamstime.com/b/golden-elegance-background-families-shopping-exclusive-gold-jewelry-eid-celebrations-golden-elegance-background-368884300.jpg');
+            background-size: cover;
+            position: relative;
+        }
+        .logo {
+            width: 350px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 0 0 15px #ffd700;
+        }
+        p {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .scroll-down {
+            position: absolute;
+            bottom: 50px;
+            animation: pulse 2s infinite;
+        }
+        .scroll-down img {
+            width: 70px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .scroll-down img:hover {
+            transform: scale(1.2);
+        }
+        @keyframes pulse {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(15px); }
+            100% { transform: translateY(0); }
+        }
+        section {
+            padding: 80px 20px;
+            min-height: 100vh;
+        }
+        #credit { background: rgba(20,20,20,0.9); }
+        #servers { background: rgba(10,10,10,0.9); }
+        #hosting { background: rgba(15,15,15,0.9); }
+        #bots { background: rgba(20,20,20,0.9); }
+        #members { background: rgba(10,10,10,0.9); }
+        #offers { background: rgba(20,20,20,0.9); }
+        #social { background: rgba(15,15,15,0.9); }
+        #payments { background: rgba(10,10,10,0.9); }
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px #ffd700;
+        }
+        .content {
+            font-size: 1.5em;
+            line-height: 2.5;
+            background: rgba(255, 215, 0, 0.15);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+            display: inline-block;
+            max-width: 900px;
+        }
+        .plan, .bot-list {
+            margin: 40px 0;
+            padding: 30px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 20px;
+            border: 2px solid #ffd700;
+        }
+        .soon { color: #ffaa00; font-style: italic; }
+        .separator {
+            margin: 30px 0;
+            border-top: 2px solid #ffd700;
+            width: 80%;
+        }
+        .social-buttons {
+            margin: 40px 0;
+        }
+        .social-btn {
+            display: inline-block;
+            margin: 15px 30px;
+            padding: 12px 40px;
+            background: linear-gradient(45deg, #ffd700, #b8860b);
+            color: #000;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+            transition: all 0.3s;
+        }
+        .social-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 215, 0, 1);
+        }
+        .discord-btn {
+            display: block;
+            margin: 60px auto;
+            padding: 20px 80px;
+            background: linear-gradient(45deg, #ffd700, #b8860b);
+            color: #000;
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 25px;
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
+            transition: all 0.4s;
+            max-width: 600px;
+        }
+        .discord-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(255, 215, 0, 1);
+        }
+        .offer-text {
+            font-size: 1.8em;
+            line-height: 2.8;
+        }
+        footer {
+            padding: 30px;
+            background: #111;
+            font-size: 1.2em;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
+    <nav>
+        <a href="#home">الرئيسية</a>
+        <a href="#credit">كريديت</a>
+        <a href="#servers">سيرفرات</a>
+        <a href="#hosting">استضافة بوت</a>
+        <a href="#bots">أسعار بوتات</a>
+        <a href="#members">أعضاء</a>
+        <a href="#offers">عروضنا</a>
+        <a href="#social">حساباتنا</a>
+        <a href="#payments">طرق الدفع</a>
+    </nav>
 
-  <!-- زر تبديل اللغة -->
-  <div class="lang-switch" onclick="toggleLang()">
-    <span id="lang-text">English</span>
-  </div>
+    <header id="home">
+        <img src="https://i.ibb.co/YFgrfRbQ/81129628470b.webp" alt="VMBL STORE Logo" class="logo">
+        <h1>VMBL STORE</h1>
+        <p>خبرة فوق 3+ سنين</p>
 
-  <header>
-    <img src="https://i.ibb.co/YFgrfRbQ/81129628470b.webp" alt="VMBL STORE" class="logo-img">
-    <h1 data-ar="VMBL STORE" data-en="VMBL STORE">VMBL STORE</h1>
-    <p class="tagline" data-ar="أكبر ستور في الشرق الأوسط" data-en="The Biggest Store In Middle East">
-      أكبر ستور في الشرق الأوسط
-    </p>
-  </header>
+        <div class="scroll-down">
+            <a href="#credit">
+                <img src="https://png.pngtree.com/png-clipart/20220222/original/pngtree-luxury-golden-arrow-png-element-png-image_7295945.png" alt="Scroll Down">
+            </a>
+        </div>
+    </header>
 
-  <main>
-    <h2 class="section-title" data-ar="اللي بنقدمه" data-en="What We Offer">
-      اللي بنقدمه
-    </h2>
+    <section id="credit">
+        <h2>⚡ شراء كريديت ⚡</h2>
+        <div class="content">
+            <ul style="list-style:none; padding:0;">
+                <li>1 Million Credit = 30 EGP</li>
+                <li>2 Million Credit = 50 EGP</li>
+                <li>3 Million Credit = 80 EGP</li>
+                <li>4 Million Credit = 120 EGP</li>
+                <li>5 Million Credit = 150 EGP</li>
+                <li>6 Million Credit = 180 EGP</li>
+            </ul>
+        </div>
+    </section>
 
-    <div class="services">
-      <div class="card">
-        <h3 data-ar="يوزرات ديسكورد" data-en="Discord Usernames">يوزرات ديسكورد</h3>
-        <p data-ar="يوزرات نادرة ومميزة بكل الأنواع" data-en="Rare & unique usernames of all types">
-          يوزرات نادرة ومميزة بكل الأنواع
-        </p>
-      </div>
-      <div class="card">
-        <h3 data-ar="نيترو لينك 3 شهور" data-en="3-Month Nitro Links">نيترو لينك 3 شهور</h3>
-        <p data-ar="نيترو بأفضل الأسعار في السوق" data-en="Nitro at the best market prices">
-          نيترو بأفضل الأسعار في السوق
-        </p>
-      </div>
-      <div class="card">
-        <h3 data-ar="إنشاء سيرفرات ديسكورد" data-en="Create Discord Servers">إنشاء سيرفرات ديسكورد</h3>
-        <p data-ar="سيرفرات احترافية جاهزة" data-en="Professional ready-made servers">
-          سيرفرات احترافية جاهزة
-        </p>
-      </div>
-      <div class="card">
-        <h3 data-ar="شحن كريديت ProBot" data-en="ProBot Credits">شحن كريديت ProBot</h3>
-        <p data-ar="كريديت بأرخص سعر" data-en="Credits at the cheapest price">
-          كريديت بأرخص سعر
-        </p>
-      </div>
-      <div class="card">
-        <h3 data-ar="هوستينج بوتات" data-en="Bot Hosting">هوستينج بوتات</h3>
-        <p data-ar="هوست قوي 24/7 بدون توقف" data-en="Powerful 24/7 hosting">
-          هوست قوي 24/7 بدون توقف
-        </p>
-      </div>
-      <div class="card">
-        <h3 data-ar="مشاريع بوتات جاهزة" data-en="Ready Bot Projects">مشاريع بوتات جاهزة</h3>
-        <p data-ar="بوتات مبرمجة ومضمونة" data-en="Programmed & guaranteed bots">
-          بوتات مبرمجة ومضمونة
-        </p>
-      </div>
-      <div class="card">
-        <h3 data-ar="أعضاء ديسكورد" data-en="Discord Members">أعضاء ديسكورد</h3>
-        <p data-ar="أعضاء حقيقيين وأونلاين" data-en="Real & online members">
-          أعضاء حقيقيين وأونلاين
-        </p>
-      </div>
-    </div>
+    <section id="servers">
+        <h2>🧬 〘 VMBL STORE 〙 🧬<br>⚡ 𝐁𝐔𝐘 𝐒𝐄𝐑𝐕𝐄𝐑𝐒 ⚡</h2>
+        <div class="content">
+            💾 Shop Server ⫸ 90K 💰 50 L.E<br><br>
+            🔗 Community Server ⫸ 160K 💰 100 L.E<br><br>
+            🎮 Gaming Server ⫸ 300K 💰 150 L.E
+        </div>
+    </section>
 
-    <h2 class="section-title" data-ar="طرق الدفع" data-en="Payment Methods">طرق الدفع</h2>
-    <p style="text-align:center;font-size:2.2rem;margin:3rem 0;color:var(--main)">
-      <strong>Instapay • Vodafone Cash • Orange Cash</strong>
-    </p>
+    <section id="hosting">
+        <h2>🤖 | 𝐁𝐎𝐓 𝐇𝐎𝐒𝐓𝐈𝐍𝐆 - أسعار الاستضافة الشهرية | 🤖</h2>
+        <div class="content">
+            <div class="plan">
+                🔹 | 𝐏𝐋𝐀𝐍 𝟏 (الخطة الأساسية)<br>
+                ⚡️ القوة: 40 CPU<br>
+                💾 الذاكرة: 256 RAM<br>
+                📦 التخزين: 1 GIGA STORAGE<br>
+                💰 السعر: 90,000 كريدت شهريًا | 70 جنيه مصري (L.E) شهريًا
+            </div>
+            <div class="plan">
+                🔸 | 𝐏𝐋𝐀𝐍 𝟐 (الخطة الاحترافية)<br>
+                ⚡️ القوة: 70 CPU<br>
+                💾 الذاكرة: 1 GIGA RAM<br>
+                📦 التخزين: 3 GIGA STORAGE<br>
+                💰 السعر: 150,000 كريدت شهريًا | 100 جنيه مصري (L.E) شهريًا
+            </div>
+            <div class="plan soon">
+                ⏳ | 𝐏𝐋𝐀𝐍 𝟑 (الخطة المتميزة)<br>
+                الحالة: قريباً (SOON)
+            </div>
+        </div>
+    </section>
 
-    <a href="https://discord.gg/We4SvEeaNr" class="discord-join" target="_blank">
-      انضم لسيرفر VMBL STORE
-    </a>
-  </main>
+    <section id="bots">
+        <h2>💎┇قائمة أسعار البوتات | Bot Prices</h2>
+        <div class="content bot-list">
+            ⚙️ أنواع الإصدارات المتاحة:<br><br>
+            🥇 الإصدار الأول ┇ 150k 💳<br>
+            🥈 الإصدار الثاني ┇ 225k 💳<br>
+            🥉 الإصدار الثالث ┇ 275k 💳<br>
+            💎 الإصدار الرابع ┇ 350k 💳<br>
+            👑 الإصدار الخامس ┇ 500k 💳<br><br>
+            ⚠️ الأسعار بالكريدت فقط.<br>
+            💠 كل إصدار يحتوي على مميزات مختلفة تناسب احتياجاتك في السيرفر.<br><br>
+            <strong>كل الأسعار شهرية</strong>
+        </div>
+    </section>
 
-  <footer>
-    <p>© 2025 TheRealVenom. All Rights Reserved</p>
-  </footer>
+    <section id="members">
+        <h2>👥 | BUY MEMBERS - أسعار الأعضاء الحقيقيين | 👥</h2>
+        <div class="content">
+            ✨ <strong>ضمان الأعضاء حقيقيين 100%</strong> ✨<br><br>
+            <div class="separator"></div>
+            | 50 Members | 125K |<br><br>
+            <div class="separator"></div>
+            | 100 Members | 225K |<br><br>
+            <div class="separator"></div>
+            | 150 Members | 350K |<br><br>
+            <div class="separator"></div>
+            | 200 Members | 500K |<br><br>
+            <div class="separator"></div>
+        </div>
+    </section>
 
-  <script>
-    function toggleLang() {
-      const isAr = document.documentElement.dir === "rtl";
-      document.documentElement.dir = isAr ? "ltr" : "rtl";
-      document.documentElement.lang = isAr ? "en" : "ar";
-      document.getElementById('lang-text').textContent = isAr ? "العربية" : "English";
+    <section id="offers">
+        <h2>🔥 عروض خاصة وخصومات 🔥</h2>
+        <div class="content offer-text">
+            و حاجات تانية كتير...<br><br>
+            انت مستني اية؟ يلا خش و اشتري دلوقتي! 🚀<br><br>
+            وليك خصومات حلوة لو اشتريت مرتين أو أكتر 💰<br><br>
+            متفوتش الفرصة، أسعارنا تنافسية وجودتنا مضمونة 100% ✨
+        </div>
+    </section>
 
-      // تبديل النصوص
-      document.querySelectorAll('[data-ar]').forEach(el => {
-        el.textContent = isAr ? el.dataset.en : el.dataset.ar;
-      });
-    }
-  </script>
+    <section id="social">
+        <h2>الحسابات الرسمية لـ VMBL STORE</h2>
+        <div class="content">
+            <div class="social-buttons">
+                <a href="https://www.tiktok.com/@vmblstore" target="_blank" class="social-btn">TikTok</a>
+                <a href="https://www.youtube.com/@VMBL_STORE" target="_blank" class="social-btn">YouTube</a> <!-- نوت: لو اللينك مش شغال، تأكد من وجود القناة -->
+            </div>
+            <p style="margin-top:50px; font-size:1.4em;">
+                ⚠️ تنويه:<br>
+                هذه هي الحسابات الرسمية الوحيدة لـ VMBL STORE،<br>
+                وأي حساب آخر لا يُمثلنا بأي شكل من الأشكال.<br><br>
+                شكرًا لتعاونكم ❤️‍🔥
+            </p>
+        </div>
+    </section>
+
+    <section id="payments">
+        <h2>VMBL STORE — PAYMENTS METHODS</h2>
+        <div class="content">
+            طرق الدفع المتاحة حاليًا<br><br>
+            💳 كريدت<br>
+            📱 إنستا باي<br>
+            📲 فودافون كاش<br>
+            📲 أورنج كاش<br><br><br>
+            باقي خدمات الدفع قـريبـاً...
+        </div>
+
+        <a href="https://discord.gg/We4SvEeaNr" target="_blank" class="discord-btn">
+            يلا مستني اية خش و كون من علتنا
+        </a>
+    </section>
+
+    <footer>
+        ©2026 TheRealVenom. All Rights Reserved
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
